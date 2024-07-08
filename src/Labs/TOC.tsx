@@ -1,5 +1,5 @@
 export default function TOC() {
-    return (
+  return (
     <ul>
       <li><a id="wd-a" href="#/Labs">Labs</a></li>
       <li><a id="wd-a1" href="#/Labs/Lab1">Lab 1</a></li>

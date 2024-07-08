@@ -6,7 +6,7 @@ export default function Dashboard() {
       <div id="wd-dashboard-courses">
         {/* Course 0 */}
         <div className="wd-dashboard-course">
-          <img src="/images/reactjs.jpg" width={200} />
+          <img src="/images/reactjs.jpg" width={200} alt='' />
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1234/Home">
@@ -21,7 +21,7 @@ export default function Dashboard() {
 
         {/* Course 1 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1001.jpg" width={200} />
+          <img src="/images/1001.jpg" width={200} alt=''/>
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1001/Home">
@@ -36,7 +36,7 @@ export default function Dashboard() {
 
         {/* Course 2 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1002.jpg" width={200} />
+          <img src="/images/1002.jpg" width={200} alt='' />
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1002/Home">
@@ -51,7 +51,7 @@ export default function Dashboard() {
 
         {/* Course 3 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1003.jpg" width={200} />
+          <img src="/images/1003.jpg" width={200} alt='' />
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1003/Home">
@@ -66,7 +66,7 @@ export default function Dashboard() {
 
         {/* Course 4 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1004.jpg" width={200} />
+          <img src="/images/1004.jpg" width={200} alt='' />
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1004/Home">
@@ -81,7 +81,7 @@ export default function Dashboard() {
 
         {/* Course 5 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1005.jpg" width={200} />
+          <img src="/images/1005.jpg" width={200} alt='' />
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1005/Home">
@@ -96,11 +96,11 @@ export default function Dashboard() {
 
         {/* Course 6 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1006.jpg" width={200} />
+          <img src="/images/1006.jpg" width={200} alt=''/>
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1006/Home">
-              CS1006 Cybersecurity  
+              CS1006 Cybersecurity
             </a>
             <p className="wd-dashboard-course-title">
               CS1006 Spring 2023 Semester.38588
@@ -111,7 +111,7 @@ export default function Dashboard() {
 
         {/* Course 7 */}
         <div className="wd-dashboard-course">
-          <img src="/images/1007.jpg" width={200} />
+          <img src="/images/1007.jpg" width={200} alt='' />
           <div>
             <a className="wd-dashboard-course-link"
               href="#/Kanbas/Courses/1007/Home">
@@ -125,4 +125,5 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
-);}
+  );
+}
