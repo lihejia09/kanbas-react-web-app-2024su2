@@ -13,6 +13,7 @@ body * {
   }
 }
 
+
 .btn-secondary {
   --bs-btn-color: #000;
   --bs-btn-bg: #c7cdd1;
@@ -33,6 +34,9 @@ body * {
   border: 1px solid #c7cdd1;
 }
 
+.green-border-left {
+  border-left: 2px solid green;
+}
 
 
 .wd-assignment-list-item {

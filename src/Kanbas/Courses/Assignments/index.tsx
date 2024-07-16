@@ -18,54 +18,60 @@ export default function Assignments() {
             <AssignmentHeader />
           </div>
           <ul className="wd-assignment-list list-group rounded-0">
-            <li className="wd-assignment-list-item list-group-item p-3 ps-1 d-flex justify-content-between 
+            <li className="wd-assignment-list-item list-group-item p-3 ps-1 d-flex justify-content-between
             align-items-center">
               <AssignmentHead />
-              <a className="wd-assignment-link text-decoration-none text-dark"
-                href="#/Kanbas/Courses/1234/Assignments/123">
-                <div className="wd-assignment-description me-5">
-                  <h4 className="fw-bold">A1</h4>
-                  <span className="text-danger">Multiple Modules</span> |
-                  <span className="text-muted"><strong> Not available until</strong></span>
-                  <span className="text-muted"> May 6 at 12:00am |</span>&nbsp;<br />
-                  <span className="text-muted"> <strong>Due</strong></span>
-                  <span className="text-muted"> May 13 at 11:59pm | 100 pts</span>
-                </div>
-              </a>
+              <div className="d-flex flex-column mx-3 me-auto">
+                <a className="wd-assignment-link text-decoration-none text-dark"
+                  href="#/Kanbas/Courses/1234/Assignments/123">
+                  <div className="wd-assignment-description me-5">
+                    <h4 className="fw-bold">A1</h4>
+                    <span className="text-danger">Multiple Modules</span> |
+                    <span className="text-muted"><strong> Not available until</strong></span>
+                    <span className="text-muted"> May 6 at 12:00am |</span>&nbsp;<br />
+                    <span className="text-muted"> <strong>Due</strong></span>
+                    <span className="text-muted"> May 13 at 11:59pm | 100 pts</span>
+                  </div>
+                </a>
+              </div>
               <AssignmentControlButtons />
             </li>
 
-            <li className="wd-assignment-list-item list-group-item p-3 ps-1 d-flex justify-content-between 
+
+            <li className="wd-assignment-list-item list-group-item p-3 ps-1 d-flex justify-content-between
             align-items-center">
               <AssignmentHead />
-              <a className="wd-assignment-link text-decoration-none text-dark"
-                href="#/Kanbas/Courses/1234/Assignments/124">
-              <div className="wd-assignment-description me-5">
-                <h4 className="fw-bold">A2</h4>
-                <span className="text-danger">Multiple Modules</span> |
-                <span className="text-muted"><strong> Not available until</strong></span>
-                <span className="text-muted"> May 13 at 12:00am |</span>&nbsp;<br />
-                <span className="text-muted"> <strong>Due</strong></span>
-                <span className="text-muted"> May 20 at 11:59pm | 100 pts</span>
+              <div className="d-flex flex-column mx-3 me-auto">
+                <a className="wd-assignment-link text-decoration-none text-dark"
+                  href="#/Kanbas/Courses/1234/Assignments/124">
+                  <div className="wd-assignment-description me-5">
+                    <h4 className="fw-bold">A2</h4>
+                    <span className="text-danger">Multiple Modules</span> |
+                    <span className="text-muted"><strong> Not available until</strong></span>
+                    <span className="text-muted"> May 13 at 12:00am |</span>&nbsp;<br />
+                    <span className="text-muted"> <strong>Due</strong></span>
+                    <span className="text-muted"> May 20 at 11:59pm | 100 pts</span>
+                  </div>
+                </a>
               </div>
-              </a>
               <AssignmentControlButtons />
             </li>
-
-            <li className="wd-assignment-list-item list-group-item p-3 ps-1 d-flex justify-content-between 
+            <li className="wd-assignment-list-item list-group-item p-3 ps-1 d-flex justify-content-between
             align-items-center">
               <AssignmentHead />
-              <a className="wd-assignment-link text-decoration-none text-dark"
-                href="#/Kanbas/Courses/1234/Assignments/125">
-              <div className="wd-assignment-description me-5">
-                <h4 className="fw-bold">A3</h4>
-                <span className="text-danger">Multiple Modules</span> |
-                <span className="text-muted"><strong> Not available until</strong></span>
-                <span className="text-muted"> May 20 at 12:00am |</span>&nbsp;<br />
-                <span className="text-muted"> <strong>Due</strong></span>
-                <span className="text-muted"> May 27 at 11:59pm | 100 pts</span>
+              <div className="d-flex flex-column mx-3 me-auto">
+                <a className="wd-assignment-link text-decoration-none text-dark"
+                  href="#/Kanbas/Courses/1234/Assignments/125">
+                  <div className="wd-assignment-description me-5">
+                    <h4 className="fw-bold">A3</h4>
+                    <span className="text-danger">Multiple Modules</span> |
+                    <span className="text-muted"><strong> Not available until</strong></span>
+                    <span className="text-muted"> May 20 at 12:00am |</span>&nbsp;<br />
+                    <span className="text-muted"> <strong>Due</strong></span>
+                    <span className="text-muted"> May 27 at 11:59pm | 100 pts</span>
+                  </div>
+                </a>
               </div>
-              </a>
               <AssignmentControlButtons />
             </li>
           </ul>

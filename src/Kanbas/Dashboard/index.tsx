@@ -4,7 +4,7 @@ export default function Dashboard() {
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses (8)</h2> <hr />
       <div id="wd-dashboard-courses" className="row">
-        <div className="row row-cols-1 row-cols-md-5 g-4">
+        <div className="row row-cols-1 row-cols-md-5 g-4 custom-spacing">
           <div className="wd-dashboard-course col" style={{ width: "270px" }}>
             <div className="card">
               <a className="wd-dashboard-course-link text-decoration-none text-dark"
