@@ -1,11 +1,21 @@
+import { Link, useParams } from "react-router-dom";
+import * as db from "../../Database";
+
 export default function AssignmentEditor() {
+  const { assignmentId, courseID } = useParams();
+  const assignment = db.assignments.find((assignment) => assignment._id === assignmentId);
+
   return (
     <div id="wd-assignments-editor">
       <div className="form-row mt-3 mx-3">
         <label htmlFor="wd-assignment-name" className="form-label">
           Assignment Name
         </label>
-        <input type="text" className="form-control mb-3" id="wd-assignment-name" value="A1" />
+        <input
+          type="text"
+          className="form-control mb-3"
+          id="wd-assignment-name"
+          defaultValue={assignment?.title} />
       </div>
 
       <div className="mb-3 mx-3">
@@ -23,9 +33,14 @@ export default function AssignmentEditor() {
         <div className="row my-3">
           <div className="col-4 text-end">Points</div>
           <div className="col-8">
-            <input type="text" className="form-control" id="wd-assignment-points" />
-          </div> </div>
-        
+            <input
+              type="text"
+              className="form-control"
+              id="wd-assignment-points"
+              defaultValue={100} />
+          </div>
+        </div>
+
         <div className="row my-3">
           <div className="col-4 text-end">Assignment Group</div>
           <div className="col-8">
@@ -43,7 +58,8 @@ export default function AssignmentEditor() {
               <option value="percentage">Percentage</option>
               <option value="letter">Letter Grade</option>
             </select>
-          </div></div>
+          </div>
+        </div>
 
         <div className="row my-3">
           <div className="col-4 text-end">Submission Type</div>
@@ -85,13 +101,13 @@ export default function AssignmentEditor() {
                 </label>
               </div>
             </div>
-          </div></div>
+          </div>
+        </div>
 
         <div className="row my-3">
           <div className="col-4 text-end">Assign</div>
           <div className="col-8">
             <div className="border rounded px-3">
-
               <label className="form-check-label mb-1 mt-3" htmlFor="wd-assignment-assign-to">
                 <b>Assign to</b>
               </label>
@@ -119,13 +135,17 @@ export default function AssignmentEditor() {
 
       <hr className="custom-hr" />
       <div className="row">
-          <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-danger mx-1 my-3 mr-3 float-end" id="wd-assignment-save">
+        <div className="d-flex justify-content-end">
+          <Link
+            className="wd-assignment-button-return"
+            to={`/Kanbas/Courses/${courseID}/Assignments`}>
+            <button type="button" className="btn btn-danger mx-1 my-3 mr-3 float-end" id="wd-assignment-save" >
               Save
             </button>
-            <button type="button" className="btn btn-secondary mx-1 my-3 float-end" id="wd-assignment-cancel">
+            <button type="button" className="btn btn-secondary mx-1 my-3 float-end" id="wd-assignment-cancel" >
               Cancel
             </button>
+          </Link>
         </div>
       </div>
     </div>
