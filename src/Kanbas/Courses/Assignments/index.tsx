@@ -41,7 +41,7 @@ export default function Assignments() {
                         <span className="text-muted small"> | <strong> Not available until</strong></span>
                         <span className="text-muted small"> {assignment.available} |</span>&nbsp;<br />
                         <span className="text-muted small"> <strong>Due</strong></span>
-                        <span className="text-muted small"> {assignment.due} | {assignment.points} pts</span>
+                        <span className="text-muted small"> {assignment.due}  |  {assignment.points} pts</span>
                       </div>
                     </Link>
                   </div>

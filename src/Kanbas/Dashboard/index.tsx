@@ -13,7 +13,7 @@ export default function Dashboard() {
             <div className="wd-dashboard-course col" style={{ width: "300px" }}>
               <Link to={`/Kanbas/Courses/${course._id}/Home`} className="text-decoration-none" >
                 <div className="card rounded-3 overflow-hidden" style={{ height: "380px" }}>
-                  <img src={course.image || "/images/reactjs.jpg" } alt={course.name} height="160" />
+                  <img src={course.image || "/images/100.jpg" } alt={course.name} height="160" />
                   <div className="card-body">
                     <span className="wd-dashboard-course-link"
                       style={{ textDecoration: "none", color: "navy", fontWeight: "bold" }} >
