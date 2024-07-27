@@ -1,9 +1,24 @@
-import { Link, useParams } from "react-router-dom";
-import * as db from "../../Database";
+import React from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addAssignment,
+  updateAssignment,
+  editAssignment,
+} from "./reducer";
+
 
 export default function AssignmentEditor() {
   const { assignmentId, courseID } = useParams();
-  const assignment = db.assignments.find((assignment) => assignment._id === assignmentId);
+  // const assignment = db.assignments.find((assignment) => assignment._id === assignmentId);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const assignments = useSelector(
+    (state: any) => state.assignmentsReducer.assignments
+  );
+  const assignment = useSelector(
+    (state: any) => state.assignmentsReducer.assignment
+  );
 
   return (
     <div id="wd-assignments-editor">
@@ -15,17 +30,25 @@ export default function AssignmentEditor() {
           type="text"
           className="form-control mb-3"
           id="wd-assignment-name"
-          defaultValue={assignment?.title} />
+          value={assignment?.title}
+          onChange={(e) =>
+            dispatch(
+              editAssignment({ ...assignment, title: e.target.value })
+            )}
+        />
       </div>
 
       <div className="mb-3 mx-3">
-        <textarea className="form-control" id="wd-assignment-description" rows={10}>
-          The assignment is available online.
-          Submit a link to the landing page of
-          your web application running on Netlify. The landing page should include
-          the following: Your full name and section link to the Kanbas application
-          Links to all relevant source code repositories
-          The Kanbas application should include a link to navigate back to the landing page.
+        <textarea
+          className="form-control"
+          id="wd-assignment-description"
+          rows={10}
+          value={assignment?.description}
+          onChange={(e) =>
+            dispatch(
+              editAssignment({ ...assignment, description: e.target.value })
+            )}
+        >
         </textarea>
       </div>
 
@@ -37,7 +60,12 @@ export default function AssignmentEditor() {
               type="text"
               className="form-control"
               id="wd-assignment-points"
-              defaultValue={assignment?.points} />
+              defaultValue={assignment?.points}
+              onChange={(e) =>
+                dispatch(
+                  editAssignment({ ...assignment, points: e.target.value })
+                )}
+            />
           </div>
         </div>
 
@@ -115,17 +143,46 @@ export default function AssignmentEditor() {
               <label className="form-check-label mb-1 mt-3" htmlFor="wd-assignment-due-date">
                 <b>Due</b>
               </label>
-              <input type="date" className="form-control mb-2" id="wd-assignment-due-date" value={assignment?.due} />
+              <input
+                type="date"
+                className="form-control mb-2"
+                id="wd-assignment-due-date"
+                value={assignment?.due}
+                onChange={(e) =>
+                  dispatch(
+                    editAssignment({ ...assignment, due: e.target.value })
+                  )}
+              />
               <div className="row mt-3">
                 <div className="col">
                   <label className="form-check-label mb-1" htmlFor="wd-assignment-available-from">
                     <b>Available from</b></label>
-                  <input type="date" className="form-control mb-2" id="wd-assignment-available-from" value={assignment?.available} />
+                  <input
+                    type="date"
+                    className="form-control mb-2"
+                    id="wd-assignment-available-from"
+                    value={assignment?.available}
+                    onChange={(e) =>
+                      dispatch(
+                        editAssignment({ ...assignment, available: e.target.value })
+                      )
+                    }
+                  />
                 </div>
                 <div className="col mb-5">
                   <label className="form-check-label mb-1" htmlFor="wd-assignment-available-until">
                     <b>Until</b></label>
-                  <input type="date" className="form-control" id="wd-assignment-available-until" value={assignment?.due} />
+                  <input
+                    type="date"
+                    className="form-control"
+                    id="wd-assignment-available-until"
+                    value={assignment?.until}
+                    onChange={(e) =>
+                      dispatch(
+                        editAssignment({ ...assignment, until: e.target.value })
+                      )
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -139,13 +196,29 @@ export default function AssignmentEditor() {
           <Link
             className="wd-assignment-button-return"
             to={`/Kanbas/Courses/${courseID}/Assignments`}>
-            <button type="button" className="btn btn-danger mx-1 my-3 mr-3 float-end" id="wd-assignment-save" >
-              Save
-            </button>
-            <button type="button" className="btn btn-secondary mx-1 my-3 float-end" id="wd-assignment-cancel" >
+            <button
+              type="button"
+              className="btn btn-secondary mx-1 my-3 float-end"
+              id="wd-assignment-cancel"
+            >
               Cancel
             </button>
           </Link>
+          <button
+            type="button"
+            className="btn btn-danger mx-1 my-3 mr-3 float-end"
+            id="wd-assignment-save"
+            onClick={() => {
+              if (assignments.find((assignment: any) => assignment._id === assignmentId)) {
+                dispatch(updateAssignment(assignment));
+              } else {
+                dispatch(addAssignment(assignment));
+              }
+              navigate(`/Kanbas/Courses/${courseID}/Assignments`);
+            }}
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>
