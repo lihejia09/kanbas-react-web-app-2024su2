@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addAssignment,
+  setAssignments,
   updateAssignment,
   editAssignment,
 } from "./reducer";
-
+import * as client from "./client";
 
 export default function AssignmentEditor() {
   const { assignmentId, courseID } = useParams();
-  // const assignment = db.assignments.find((assignment) => assignment._id === assignmentId);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const assignments = useSelector(
@@ -19,6 +19,24 @@ export default function AssignmentEditor() {
   const assignment = useSelector(
     (state: any) => state.assignmentsReducer.assignment
   );
+  const fetchAssignments = async () => {
+    const assignments = await client.findAssignmentsForCourse(courseID as string);
+    dispatch(setAssignments(assignments));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+
+  const createAssignment = async (assignment: any) => {
+    const newAssignment = await client.createAssignment(courseID as string, assignment);
+    dispatch(addAssignment(newAssignment));
+  }
+
+  const updateAssignments = async (assignment: any) => {
+    const status = await client.updateAssignment(assignment);
+    dispatch(editAssignment(assignment));
+  }
+
 
   return (
     <div id="wd-assignments-editor">
@@ -32,9 +50,11 @@ export default function AssignmentEditor() {
           id="wd-assignment-name"
           value={assignment?.title}
           onChange={(e) =>
-            dispatch(
-              editAssignment({ ...assignment, title: e.target.value })
-            )}
+            // dispatch(
+            //   editAssignment({ ...assignment, title: e.target.value })
+            // )
+            updateAssignments({ ...assignment, title: e.target.value })
+          }
         />
       </div>
 
@@ -45,10 +65,13 @@ export default function AssignmentEditor() {
           rows={10}
           value={assignment?.description}
           onChange={(e) =>
-            dispatch(
-              editAssignment({ ...assignment, description: e.target.value })
-            )}
+            // dispatch(
+            //   editAssignment({ ...assignment, description: e.target.value })
+            // )
+            updateAssignments({ ...assignment, description: e.target.value })
+          }
         >
+
         </textarea>
       </div>
 
@@ -62,9 +85,11 @@ export default function AssignmentEditor() {
               id="wd-assignment-points"
               defaultValue={assignment?.points}
               onChange={(e) =>
-                dispatch(
-                  editAssignment({ ...assignment, points: e.target.value })
-                )}
+                // dispatch(
+                //   editAssignment({ ...assignment, points: e.target.value })
+                // )
+                updateAssignments({ ...assignment, points: e.target.value })
+              }
             />
           </div>
         </div>
@@ -149,9 +174,11 @@ export default function AssignmentEditor() {
                 id="wd-assignment-due-date"
                 value={assignment?.due}
                 onChange={(e) =>
-                  dispatch(
-                    editAssignment({ ...assignment, due: e.target.value })
-                  )}
+                  // dispatch(
+                  //   editAssignment({ ...assignment, due: e.target.value })
+                  // )
+                  updateAssignments({ ...assignment, due: e.target.value })
+                }
               />
               <div className="row mt-3">
                 <div className="col">
@@ -163,9 +190,10 @@ export default function AssignmentEditor() {
                     id="wd-assignment-available-from"
                     value={assignment?.available}
                     onChange={(e) =>
-                      dispatch(
-                        editAssignment({ ...assignment, available: e.target.value })
-                      )
+                      // dispatch(
+                      //   editAssignment({ ...assignment, available: e.target.value })
+                      // )
+                      updateAssignments({ ...assignment, available: e.target.value })
                     }
                   />
                 </div>
@@ -178,9 +206,10 @@ export default function AssignmentEditor() {
                     id="wd-assignment-available-until"
                     value={assignment?.until}
                     onChange={(e) =>
-                      dispatch(
-                        editAssignment({ ...assignment, until: e.target.value })
-                      )
+                      // dispatch(
+                      //   editAssignment({ ...assignment, until: e.target.value })
+                      // )
+                      updateAssignments({ ...assignment, until: e.target.value })
                     }
                   />
                 </div>
@@ -210,9 +239,9 @@ export default function AssignmentEditor() {
             id="wd-assignment-save"
             onClick={() => {
               if (assignments.find((assignment: any) => assignment._id === assignmentId)) {
-                dispatch(updateAssignment(assignment));
+                updateAssignment(assignment);
               } else {
-                dispatch(addAssignment(assignment));
+                createAssignment(assignment);
               }
               navigate(`/Kanbas/Courses/${courseID}/Assignments`);
             }}

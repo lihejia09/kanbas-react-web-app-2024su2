@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import * as client from "./client";
 import { Link, useParams } from "react-router-dom";
 
 import { BsGripVertical } from "react-icons/bs";
@@ -12,7 +13,7 @@ import { FaTrash } from "react-icons/fa";
 import { GiNotebook } from "react-icons/gi";
 
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAssignment, editAssignment } from "./reducer";
+import { setAssignments, deleteAssignment, editAssignment } from "./reducer";
 
 
 
@@ -33,6 +34,21 @@ export default function Assignments() {
   );
   const [assignmentToDelete, setAssignmentToDelete] = useState(currentCourseAssignments[0]);
   const dispatch = useDispatch();
+
+  const fetchAssignments = async () => {
+    const assignments = await client.findAssignmentsForCourse(courseID as string);
+    dispatch(setAssignments(assignments));
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+
+
+
+  const removeAssignment = async (assignmentId: string) => {
+    await client.deleteAssignment(assignmentId);
+    dispatch(deleteAssignment(assignmentId));
+  }
 
 
 
@@ -159,8 +175,9 @@ export default function Assignments() {
                             className="btn btn-danger"
                             data-bs-dismiss="modal"
                             onClick={() => {
-                              dispatch(deleteAssignment(
-                                assignmentToDelete._id));
+                              // dispatch(deleteAssignment(
+                              //   assignmentToDelete._id));
+                              removeAssignment(assignmentToDelete._id);
                             }}
                           >Yes
                           </button>
