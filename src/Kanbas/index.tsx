@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from "react-router";
 import { useEffect, useState } from "react";
 import Courses from "./Courses";
 import './styles.css';
-// import * as db from "./Database";
 import * as client from "./Courses/client";
 import store from "./store";
 import { Provider } from "react-redux";
