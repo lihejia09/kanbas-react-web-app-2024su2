@@ -39,7 +39,6 @@ export default function Modules() {
   }, []);
 
 
-
   return (
     <div id="wd-modules">
       <ModulesControls

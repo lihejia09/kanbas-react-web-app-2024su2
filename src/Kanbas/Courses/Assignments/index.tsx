@@ -43,8 +43,6 @@ export default function Assignments() {
     fetchAssignments();
   }, []);
 
-
-
   const removeAssignment = async (assignmentId: string) => {
     await client.deleteAssignment(assignmentId);
     dispatch(deleteAssignment(assignmentId));
