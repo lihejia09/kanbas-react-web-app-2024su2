@@ -8,7 +8,7 @@ export default function Profile() {
   const [profile, setProfile] = useState<any>({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const fetchProfile = async () => {
     try {
       const account = await client.profile();
@@ -24,7 +24,9 @@ export default function Profile() {
     navigate("/Kanbas/Account/Signin");
   };
 
-  useEffect(() => { fetchProfile(); }, []);
+  useEffect(() => {
+    fetchProfile();
+  }, []);
   return (
     <div className="wd-profile-screen">
       <h1>Profile</h1>
