@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
 import * as client from "./client";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import ModulesControls from "./ModulesControls";
 import { BsGripVertical } from "react-icons/bs";
@@ -7,7 +8,7 @@ import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons";
 import { setModules, addModule, editModule, updateModule, deleteModule }
   from "./reducer";
-import { useSelector, useDispatch } from "react-redux";
+
 
 export default function Modules() {
   const { courseID } = useParams();

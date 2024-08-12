@@ -5,13 +5,8 @@ const MODULES_API = `${REMOTE_SERVER}/api/modules`;
 
 
 export const findModulesForCourse = async (courseId: string) => {
-  try {
-    const response = await axios.get(`${COURSES_API}/${courseId}/modules`);
-    return response.data;
-  } catch (error) {
-    console.error('获取课程模块时出错:', error);
-    throw error;
-  }
+  const response = await axios.get(`${COURSES_API}/${courseId}/modules`);
+  return response.data;
 };
 
 export const updateModule = async (module: any) => {
@@ -29,7 +24,6 @@ export const createModule = async (courseId: string, module: any) => {
   const response = await axios.post(`${COURSES_API}/${courseId}/modules`, module);
   return response.data;
 };
-
 
 
 
