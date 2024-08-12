@@ -1,13 +1,11 @@
 
 import { Routes, Route, Navigate } from "react-router";
-
-
 import { useEffect, useState } from "react";
 import KanbasNavigation from "./Navigation";
 import Courses from "./Courses";
 import Dashboard from './Dashboard';
 import './styles.css';
-import * as client from "./Courses/client";
+import * as client from "./client";
 import store from "./store";
 import { Provider } from "react-redux";
 import Account from './Account';
@@ -18,7 +16,7 @@ import Session from './Account/Session';
 export default function Kanbas() {
   const [courses, setCourses] = useState<any[]>([]);
 
-  const fetchCourses = async () => {
+  const fetchAllCourses = async () => {
     const courses = await client.fetchAllCourses();
     setCourses(courses);
   };
@@ -57,7 +55,7 @@ export default function Kanbas() {
   };
 
   useEffect(() => {
-    fetchCourses();
+    fetchAllCourses();
   }, []);
 
 

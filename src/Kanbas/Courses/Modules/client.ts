@@ -3,6 +3,17 @@ const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const COURSES_API = `${REMOTE_SERVER}/api/courses`;
 const MODULES_API = `${REMOTE_SERVER}/api/modules`;
 
+
+export const findModulesForCourse = async (courseId: string) => {
+  try {
+    const response = await axios.get(`${COURSES_API}/${courseId}/modules`);
+    return response.data;
+  } catch (error) {
+    console.error('获取课程模块时出错:', error);
+    throw error;
+  }
+};
+
 export const updateModule = async (module: any) => {
   const response = await axios.
     put(`${MODULES_API}/${module._id}`, module);
@@ -10,8 +21,7 @@ export const updateModule = async (module: any) => {
 };
 
 export const deleteModule = async (moduleId: string) => {
-  const response = await axios
-    .delete(`${MODULES_API}/${moduleId}`);
+  const response = await axios.delete(`${MODULES_API}/${moduleId}`);
   return response.data;
 };
 
@@ -20,8 +30,6 @@ export const createModule = async (courseId: string, module: any) => {
   return response.data;
 };
 
-export const findModulesForCourse = async (courseId: string) => {
-  const response = await axios
-    .get(`${COURSES_API}/${courseId}/modules`);
-  return response.data;
-};
+
+
+
